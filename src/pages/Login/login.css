@@ -98,3 +98,7 @@
   font-weight: 500;
   margin-bottom: 15px;
 }
+
+.loadingButton:disabled {
+cursor: not-allowed;
+}
