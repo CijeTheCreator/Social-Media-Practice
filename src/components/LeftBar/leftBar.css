@@ -1,0 +1,66 @@
+.Options {
+  height: 100%;
+  width: 100%;
+}
+
+.Options li {
+  display: flex;
+  padding: 11px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Options li:hover {
+  background-color: rgba(128, 128, 128, 0.171);
+}
+
+.Options li p {
+  margin-left: 18px;
+}
+
+.LeftBarWrapper button {
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-left: 18px;
+  font-weight: 500;
+}
+
+hr {
+  margin-left: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Friends li {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Friends li:hover {
+  background-color: rgba(128, 128, 128, 0.171);
+}
+
+.friendImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 18px;
+}
+
+.Friends li p {
+  margin-left: 12px;
+}
+
+.leftBar {
+  position: sticky;
+  top: 50px;
+}

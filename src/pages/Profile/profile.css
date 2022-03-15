@@ -1,0 +1,8 @@
+.solution {
+  flex: 8.5;
+  /* display: flex; */
+}
+
+.solutionLevel2 {
+  display: flex;
+}

@@ -1,0 +1,134 @@
+.rightBar {
+  flex: 3;
+}
+
+li {
+  list-style-type: none;
+}
+
+.rightBarTop img {
+  height: 32px;
+  width: 32px;
+}
+
+.rightBarTop {
+  display: flex;
+  font-size: 12px;
+  font-weight: 300;
+  align-items: center;
+  margin-left: 15px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-right: 45px;
+}
+
+.rightBarTop p span {
+  font-weight: bold;
+}
+
+.rightBarTop p {
+  margin-left: 10px;
+}
+
+.rightBarCenter img {
+  width: 90%;
+  margin-left: 15px;
+  border-radius: 8px;
+}
+
+.rightBarBottom img {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.rightBarBottom {
+  margin-top: 20px;
+}
+
+.OnlineFriends {
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 15px;
+  /* margin-bottom: 15px; */
+}
+
+.rightBarBottom li {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  padding: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.rightBarBottom li:hover {
+  background-color: rgba(128, 128, 128, 0.075);
+}
+.onlineIndicator {
+  height: 8px;
+  width: 8px;
+  background-color: rgb(35, 255, 35);
+  border-radius: 50%;
+  border: solid white;
+  position: absolute;
+  top: -2px;
+  right: 7px;
+}
+
+.picAndStatus {
+  position: relative;
+}
+
+.title {
+  font-size: 15px;
+  margin-left: 15px;
+  margin-top: 18px;
+}
+
+.details {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.key {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.value {
+  margin-left: 8px;
+  font-weight: 300;
+}
+
+.userFriendsWrapper {
+  margin-left: 7px;
+}
+
+.userFriendImage {
+  height: 80px;
+  width: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.userFriendName {
+  font-size: 11px;
+  width: 97px;
+}
+
+.userFriendLi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.userFriendsWrapper ul {
+  display: flex;
+  margin-top: 15px;
+}
