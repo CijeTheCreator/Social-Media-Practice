@@ -10,9 +10,10 @@ import en from "javascript-time-ago/locale/en.json";
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
-function Feed({ profile }) {
+function Feed({ profile, user }) {
   let [posts, setPost] = useState([]);
   let [users, setUsers] = useState([]);
+  let [usersPosts, setUsersPosts] = useState([]);
   let [ProcessedPosts, setProcessedPosts] = useState([]);
   useEffect(() => {
     const ProcessedPostsFromMongo = async () => {
@@ -47,6 +48,10 @@ function Feed({ profile }) {
       return ProcessedPosts;
     };
     ProcessedPostsFromMongo().then((data) => setProcessedPosts(data));
+    const usersOnlyPost = ProcessedPosts.filter(
+      (el) => el.postee === user.userName
+    ); //Not sure whether it is user or username
+    setUsersPosts(usersOnlyPost);
   }, []);
 
   const homeFeed = function () {
@@ -63,8 +68,9 @@ function Feed({ profile }) {
     return (
       <div className="feed">
         <ProfileFeed></ProfileFeed>
-        <Share></Share>
-        {ProcessedPosts.map((post) => {
+        {user.username !== currentuser.username && <Share></Share>} //Get
+        Current User with State management
+        {usersPosts.map((post) => {
           console.log(post);
           return <Post key={post._id} postData={post}></Post>;
         })}
