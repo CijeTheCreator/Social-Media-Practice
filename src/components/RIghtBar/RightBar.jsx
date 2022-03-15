@@ -2,6 +2,16 @@ import "./rightbar.css";
 import { Users } from "./../../dummyData";
 
 function RightBar({ profile }) {
+  const relationshipProcessor = (relationship) => {
+    if (relationship == 1) {
+      return "Single";
+    } else if (relationship == 2) {
+      return "Taken";
+    } else if (relationship == 3) {
+      return "It's complicated";
+    }
+  };
+
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const homeRightBar = () => {
     return (
@@ -56,7 +66,10 @@ function RightBar({ profile }) {
               From: <span className="value">Madrid</span>
             </p>
             <p className="key">
-              Relationship: <span className="value">Single</span>
+              Relationship:{" "}
+              <span className="value">
+                {relationshipProcessor(user?.relationship)}
+              </span>
             </p>
           </div>
         </div>
