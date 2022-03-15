@@ -10,6 +10,7 @@ import axios from "axios";
 
 function Profile() {
   let [user, setUser] = useState({});
+  let [post, setPost] = useState([]);
   const param = useParams();
   // console.log("console.log(param)", param);
 
@@ -23,7 +24,7 @@ function Profile() {
       setUser(data.data);
     };
     fetchUser();
-  }, [user]);
+  }, [param.id]);
 
   return (
     <div>
