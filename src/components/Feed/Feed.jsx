@@ -2,15 +2,17 @@ import Share from "../Share/Share";
 import Post from "../Post/Post";
 import ProfileFeed from "../ProfileFeed/ProfileFeed";
 import { Posts, Users } from "./../../dummyData";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
+import { AuthContext } from "../../context/AuthContext";
 
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo("en-US");
 
 function Feed({ profile, user }) {
+  const { user: currentuser } = useContext(AuthContext);
   let [posts, setPost] = useState([]);
   let [users, setUsers] = useState([]);
   let [usersPosts, setUsersPosts] = useState([]);
@@ -68,8 +70,8 @@ function Feed({ profile, user }) {
     return (
       <div className="feed">
         <ProfileFeed></ProfileFeed>
-        {user.username !== currentuser.username && <Share></Share>} //Get
-        Current User with State management
+        {user?.username !== currentuser.username && <Share></Share>}
+
         {usersPosts.map((post) => {
           console.log(post);
           return <Post key={post._id} postData={post}></Post>;

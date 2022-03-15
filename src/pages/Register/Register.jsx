@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import "./register.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
   const email = useRef();
@@ -7,7 +9,8 @@ function Register() {
   const confirmPassword = useRef();
   const firstName = useRef();
   const lastName = useRef();
-  const history = useHistory(); //import from react-router-dom
+  const username = useRef();
+  const history = useNavigate(); //import from react-router-dom
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password.current.value !== confirmPassword.current.value) {
@@ -15,14 +18,22 @@ function Register() {
     } else {
       const usableFirstName = firstName.current.value;
       const usableLastName = lastName.current.value;
+      const usableName = `${usableFirstName} ${usableLastName}`;
       const usableConfirmPassword = confirmPassword.current.value;
       const usablePassword = password.current.value;
       const usableEmail = email.current.value;
-      const response = axios("post", {
-        name: usableFirstName,
-        email: usableEmail,
-        password: usablePassword,
-      }); //Todo I did not put the api side on github, so complete is based on this
+      const usableusername = username.current.value;
+      // const response = axios("post", ); //Todo I did not put the api side on github, so complete is based on this
+      const response = axios({
+        method: "POST",
+        url: "https://127.0.0.1:8080/v1/api/register",
+        data: {
+          name: usableName,
+          email: usableEmail,
+          password: usablePassword,
+          username: usableusername,
+        },
+      });
       history.push("/");
     }
   };
@@ -50,6 +61,13 @@ function Register() {
               required
               name="last-name"
               ref={lastName}
+            />
+            <input
+              type="text"
+              placeholder="Username"
+              required
+              name="user-name"
+              ref={username}
             />
             <input
               type="email"

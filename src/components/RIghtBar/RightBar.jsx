@@ -1,7 +1,7 @@
 import "./rightbar.css";
 import { Users } from "./../../dummyData";
 
-function RightBar({ profile }) {
+function RightBar({ profile, user }) {
   const relationshipProcessor = (relationship) => {
     if (relationship == 1) {
       return "Single";

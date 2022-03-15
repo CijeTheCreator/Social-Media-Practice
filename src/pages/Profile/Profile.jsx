@@ -35,7 +35,7 @@ function Profile() {
           <ProfileFeed user={user}></ProfileFeed>
           <div className="solutionLevel2">
             <Feed profile user={user}></Feed>
-            <RightBar profile></RightBar>
+            <RightBar profile user={user}></RightBar>
           </div>
         </div>
       </div>
