@@ -11,6 +11,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function TopBar() {
   const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="topBarWrapper">
       <div className="section1">
@@ -51,7 +52,15 @@ function TopBar() {
         </div>
         <div className="imageWrapper">
           <Link to={"/profile/id"}>
-            <img className="image" src={image} alt="profileImage" />
+            <img
+              className="image"
+              src={
+                user?.profilePicture === ""
+                  ? `${PF}/assets/istockphoto-1298261537-612x612.jpg`
+                  : user.profilePicture
+              }
+              alt="profileImage"
+            />
           </Link>
         </div>
       </div>
