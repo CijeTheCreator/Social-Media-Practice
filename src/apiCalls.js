@@ -6,7 +6,11 @@ export const loginCall = async (user, dispatch) => {
   });
 
   try {
-    const response = await axios("post", user);
+    const response = await axios({
+      method: "POST",
+      url: "http://127.0.0.1:8080/v1/api/login",
+      data: user,
+    });
     dispatch({
       type: "LOGIN_SUCCESS",
       payload: response.data,

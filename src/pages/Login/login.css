@@ -100,5 +100,10 @@
 }
 
 .loadingButton:disabled {
-cursor: not-allowed;
+  cursor: not-allowed;
+}
+
+.progress {
+  font-size: 16px !important;
+  z-index: 99;
 }

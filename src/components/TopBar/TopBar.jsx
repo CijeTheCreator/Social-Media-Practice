@@ -6,8 +6,11 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import image from "./../../assets/istockphoto-1289220974-170667a.jpg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 function TopBar() {
+  const { user } = useContext(AuthContext);
   return (
     <div className="topBarWrapper">
       <div className="section1">

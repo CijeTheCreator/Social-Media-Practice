@@ -3,11 +3,12 @@ import "./login.css";
 import { loginCall } from "./../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
+import { CircularProgress } from "@mui/material";
 
 function Login() {
   const email = useRef();
   const password = useRef();
-  console.log(email, password);
+  // console.log(email, password);
   // const email = useRef().current.value;
   // const password = useRef().current.value;
   const { isFetching, dispatch, error, user } = useContext(AuthContext);
@@ -16,8 +17,12 @@ function Login() {
     const loginEmail = email.current.value;
     const loginPassword = password.current.value;
     // console.log(loginEmail, loginPassword);
-    loginCall({ loginEmail, loginPassword }, dispatch);
-    console.log(user);
+    // console.log("did we get here");
+    loginCall({ email: loginEmail, password: loginPassword }, dispatch).then(
+      () => console.log(user)
+    );
+    // console.log("we got here");
+    // console.log(user);
   };
   return (
     <div className="loginWrapper">
@@ -46,12 +51,21 @@ function Login() {
               ref={password}
             />
             <button className="loadingButton" disabled={isFetching}>
-              {isFetching ? "loading..." : `Log in`}
+              {isFetching ? (
+                <CircularProgress className="progress"></CircularProgress>
+              ) : (
+                `Log in`
+              )}
             </button>
           </form>
           <p className="forgot">Forgot Password?</p>
           <button className="createNew loadingButton" disabled={isFetching}>
-            {isFetching ? "loading..." : `Create a New Account`}t
+            {isFetching ? (
+              <CircularProgress color="primary"></CircularProgress>
+            ) : (
+              `Create a New Account`
+            )}
+            t
           </button>
         </div>
       </div>

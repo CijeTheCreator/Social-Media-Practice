@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
 function App() {
-  console.log(process.env.REACT_APP_PUBLIC_FOLDER);
+  // console.log(process.env.REACT_APP_PUBLIC_FOLDER);
   const { user } = useContext(AuthContext);
   return (
     <Router>
