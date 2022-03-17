@@ -60,7 +60,9 @@ function Feed({ profile, user }) {
     return (
       <div className="feed">
         <Share></Share>
-        {ProcessedPosts.map((post) => {
+        {ProcessedPosts.sort(
+          (el2, el1) => el2.createdAt.getTime() - el1.createdAt.getTime()
+        ).map((post) => {
           return <Post key={post._id} postData={post}></Post>;
         })}
       </div>

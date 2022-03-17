@@ -38,17 +38,29 @@ function Share() {
             className="shareInput"
             ref={description}
           />
+          <input type="file" id="file" className="inputFile" />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImageContainer">
+            <img
+              src={URL.createObjectURL(file)}
+              alt="preview should go here"
+              className="sharePreview"
+            />
+            <button onClick={setFile(null)}>Cancel</button> //replace this with
+            an x btn later also work on this file thing at night
+          </div>
+        )}
         <div className="shareBottom">
           <ul className="listWrapper">
-            <li>
+            <label htmlFor="file">
               <PermMediaIcon
                 className="icon"
                 htmlColor="#FF6A33"
               ></PermMediaIcon>
               <p>Photo or Video</p>
-            </li>
+            </label>
             <li>
               <LabelIcon className="icon" htmlColor="purple"></LabelIcon>
               <p>Tag</p>

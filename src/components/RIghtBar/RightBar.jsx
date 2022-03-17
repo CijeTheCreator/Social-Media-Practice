@@ -1,5 +1,8 @@
 import "./rightbar.css";
 import { Users } from "./../../dummyData";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 function RightBar({ profile, user }) {
   const relationshipProcessor = (relationship) => {
@@ -12,10 +15,32 @@ function RightBar({ profile, user }) {
     }
   };
 
+  const { user: currentUser } = useContext(AuthContext);
+
+  let [friends, setFriends] = useState([]);
+  useEffect(() => {
+    const response = axios({
+      method: "",
+      url: "",
+      data: {},
+    }).then((data) => setFriends(data.data));
+  }, []);
+
+  const friendList = friends.map((freind) => {
+    return (
+      <li key={friend._id} className="userFriendLi">
+        <img src={freind.profilePicture} alt="" className="userFriendImage" />
+        <p className="userFriendName">{friendList.name}e</p>
+      </li>
+    );
+  });
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const homeRightBar = () => {
     return (
       <div className="rightBar">
+        {user !== currentUser && (
+          <button className="followButton">This is follow button</button>
+        )}
         <div className="rightBarWrapper">
           <div className="rightBarTop">
             <img src="/assets/gift.png" alt="imageGoesHere" />
@@ -56,6 +81,7 @@ function RightBar({ profile, user }) {
   const feedRightBar = () => {
     return (
       <div className="rightBar">
+        user
         <div className="feedRightBarTop">
           <h2 className="title">User Information</h2>
           <div className="details">
@@ -76,84 +102,7 @@ function RightBar({ profile, user }) {
         <div className="feedRightBarBottom">
           <h2 className="title">User Friends</h2>
           <div className="userFriendsWrapper">
-            <ul>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-            </ul>
-            <ul>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-            </ul>
-            <ul>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-              <li className="userFriendLi">
-                <img
-                  src="/assets/person/1.jpeg"
-                  alt=""
-                  className="userFriendImage"
-                />
-                <p className="userFriendName">Mmesoma Osadebe</p>
-              </li>
-            </ul>
+            <ul>{friendList}</ul>
           </div>
         </div>
       </div>
