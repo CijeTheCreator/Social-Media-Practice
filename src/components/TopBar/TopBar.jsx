@@ -51,12 +51,12 @@ function TopBar() {
           </div>
         </div>
         <div className="imageWrapper">
-          <Link to={"/profile/id"}>
+          <Link to={`/profile/${user?.username}`}>
             <img
               className="image"
               src={
                 user?.profilePicture === ""
-                  ? `${PF}/assets/istockphoto-1298261537-612x612.jpg`
+                  ? `${PF}/istockphoto-1298261537-612x612.jpg`
                   : user.profilePicture
               }
               alt="profileImage"

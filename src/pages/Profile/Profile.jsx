@@ -5,10 +5,12 @@ import Feed from "../../components/Feed/Feed";
 import "./profile.css";
 import ProfileFeed from "../../components/ProfileFeed/ProfileFeed";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 function Profile() {
+  const { user: currentUser } = useContext(AuthContext);
   let [user, setUser] = useState({});
   let [post, setPost] = useState([]);
   const param = useParams();
@@ -18,7 +20,7 @@ function Profile() {
     const fetchUser = async () => {
       const data = await axios({
         method: "get",
-        url: `http://localhost:8080/v1/api/users/?username=${param.id}`,
+        url: `http://localhost:8080/v1/api/users/?username=${param.username}`,
       });
       // console.log("console.log(data.data)", data);
       setUser(data.data);

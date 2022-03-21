@@ -3,6 +3,7 @@ import { Users } from "./../../dummyData";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import { Add, Remove } from "@mui/icons-material";
 
 function RightBar({ profile, user }) {
   const relationshipProcessor = (relationship) => {
@@ -14,22 +15,45 @@ function RightBar({ profile, user }) {
       return "It's complicated";
     }
   };
+  const { user: currentUser, dispatch } = useContext(AuthContext);
 
-  const { user: currentUser } = useContext(AuthContext);
+  let [isFollowed, setIsFollowed] = useState(
+    currentUser.following.includes(user?._id)
+  );
+  const followHandler = () => {
+    // setIsFollowed(!isFollowed);
+    if (isFollowed) {
+      dispatch({
+        type: "UNFOLLOW",
+        payload: user?._id,
+      });
+      setIsFollowed(false);
+      console.log("the user has been unfollowed");
+    } else {
+      dispatch({
+        type: "FOLLOW",
+        payload: user?._id,
+      });
+      setIsFollowed(true);
+      console.log("the user has been followed");
+    }
+  };
 
   let [friends, setFriends] = useState([]);
   useEffect(() => {
     const response = axios({
-      method: "",
-      url: "",
-      data: {},
-    }).then((data) => setFriends(data.data));
-  }, []);
+      method: "GET",
+      url: `http://127.0.0.1:8080/v1/api/users/?id=${currentUser._id}`,
+    }).then((data) => {
+      setFriends(data.data.following);
+      console.log(data.data);
+    });
+  }, [currentUser._id]);
 
-  const friendList = friends.map((freind) => {
+  const friendList = friends.map((friend) => {
     return (
       <li key={friend._id} className="userFriendLi">
-        <img src={freind.profilePicture} alt="" className="userFriendImage" />
+        <img src={friend.profilePicture} alt="" className="userFriendImage" />
         <p className="userFriendName">{friendList.name}e</p>
       </li>
     );
@@ -38,9 +62,6 @@ function RightBar({ profile, user }) {
   const homeRightBar = () => {
     return (
       <div className="rightBar">
-        {user !== currentUser && (
-          <button className="followButton">This is follow button</button>
-        )}
         <div className="rightBarWrapper">
           <div className="rightBarTop">
             <img src="/assets/gift.png" alt="imageGoesHere" />
@@ -61,7 +82,10 @@ function RightBar({ profile, user }) {
                     <li key={user.id}>
                       <div className="picAndStatus">
                         <img
-                          src={PF + user.profilePicture}
+                          src={
+                            PF + user.profilePicture ||
+                            PF + "/istockphoto-1298261537-612x612"
+                          }
                           alt="imageGoesHere"
                         />
                         <div className="onlineIndicator"></div>
@@ -81,7 +105,21 @@ function RightBar({ profile, user }) {
   const feedRightBar = () => {
     return (
       <div className="rightBar">
-        user
+        {user.username !== currentUser.username && (
+          <>
+            {!isFollowed && (
+              <button className="followButton" onClick={followHandler}>
+                Follow <Add className="add"></Add>
+              </button>
+            )}
+            {isFollowed && (
+              <button className="unfollowButton" onClick={followHandler}>
+                Unfollow <Remove className="add"></Remove>
+              </button>
+            )}
+          </>
+        )}
+        {/* {console.log(user, currentUser)} */}
         <div className="feedRightBarTop">
           <h2 className="title">User Information</h2>
           <div className="details">

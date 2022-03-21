@@ -132,3 +132,33 @@ li {
   display: flex;
   margin-top: 15px;
 }
+
+.followButton {
+  border: none;
+  padding: 4px;
+  border-radius: 3px;
+  background-color: rgb(11, 167, 11);
+  color: white;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add {
+  font-size: 17px !important;
+  margin-left: 2px;
+  margin-bottom: 1px;
+}
+
+.unfollowButton {
+  border: none;
+  padding: 4px;
+  border-radius: 3px;
+  background-color: rgb(192, 0, 0);
+  color: white;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

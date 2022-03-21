@@ -8,21 +8,14 @@ import { CircularProgress } from "@mui/material";
 function Login() {
   const email = useRef();
   const password = useRef();
-  // console.log(email, password);
-  // const email = useRef().current.value;
-  // const password = useRef().current.value;
+
   const { isFetching, dispatch, error, user } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const loginEmail = email.current.value;
     const loginPassword = password.current.value;
-    // console.log(loginEmail, loginPassword);
-    // console.log("did we get here");
-    loginCall({ email: loginEmail, password: loginPassword }, dispatch).then(
-      () => console.log(user)
-    );
-    // console.log("we got here");
-    // console.log(user);
+
+    loginCall({ email: loginEmail, password: loginPassword }, dispatch).then();
   };
   return (
     <div className="loginWrapper">

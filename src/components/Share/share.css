@@ -74,3 +74,8 @@
 .inputFile {
   display: none;
 }
+
+li label {
+  display: flex;
+  cursor: pointer;
+}

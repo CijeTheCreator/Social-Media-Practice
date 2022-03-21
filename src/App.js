@@ -19,7 +19,7 @@ function App() {
           path="/"
           element={user ? <Home></Home> : <Login />}
         ></Route>
-        <Route exact path="/profile/:id" element={<Profile />}></Route>
+        <Route exact path="/profile/:username" element={<Profile />}></Route>
         <Route
           exact
           path="/login"
