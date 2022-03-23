@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import Messenger from "./pages/Messenger/Messenger";
 
 function App() {
   // console.log(process.env.REACT_APP_PUBLIC_FOLDER);
@@ -30,6 +31,7 @@ function App() {
           path="/register"
           element={!user ? <Register /> : <Home></Home>}
         ></Route>
+        <Route exact path="/Messenger" element={<Messenger />}></Route>
       </Routes>
     </Router>
   );

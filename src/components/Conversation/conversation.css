@@ -1,0 +1,94 @@
+.conversationBottom {
+  margin-top: 5px;
+}
+
+.conversationPerson {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.conversationPerson:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.conversationPersonImage {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.conversationPersonDetails {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.conversationPersonDetailsRight {
+  margin-right: 15px;
+  position: relative;
+}
+
+.conversationName {
+  font-weight: bold;
+  /* margin-bottom: 10px; */
+  font-size: 16px;
+}
+
+.conversationLastMessage {
+  /* font-weight: 300; */
+  font-size: 15px;
+  margin-top: 3px;
+  color: gray;
+  /* margin-bottom: 10px; */
+}
+
+.conversationPersonDetailsLeft {
+  margin-bottom: 10px;
+}
+
+.conversations {
+  flex: 2.5;
+  /* background-color: azure; */
+  border-right: solid rgb(216, 216, 216) 1px;
+  overflow-y: scroll;
+  position: sticky;
+  /* padding-top: 10px;
+  padding-left: 15px; */
+}
+
+.conversationTop {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-left: 15px;
+}
+
+.dateOfLastMessage {
+  position: absolute;
+  top: -17px;
+  right: 0.9px;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.messagesCount {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 50%;
+  background-color: rgb(117, 196, 0);
+  border: none;
+  font-size: 12px;
+  display: block;
+  color: white;
+}

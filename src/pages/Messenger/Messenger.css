@@ -1,0 +1,45 @@
+.messengerWrapper {
+  display: flex;
+  height: calc(100vh - 50px);
+
+  /* padding-top: 10px;
+
+  padding-left: 20px; */
+}
+
+.messageWindow {
+  flex: 5;
+}
+
+.messengerSearchIcon {
+  position: absolute;
+  top: 4.1px;
+  left: 23.6px;
+  font-size: 14px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.messengerTocIcon {
+  /* margin-left: 15px; */
+  color: gray;
+  font-size: 30px !important;
+}
+
+.messengerSearchIcon {
+  color: gray;
+}
+
+.messengerSearchInput {
+  width: 72%;
+  height: 33px;
+  border-radius: 60px;
+  outline: none;
+  /* border: none; */
+  border: solid 1px gray;
+  margin-left: 17px;
+  padding-left: 32px;
+}
